@@ -65,14 +65,14 @@ public class UrlController {
 					requestUrl.indexOf(httpRequest.getRequestURI(), "http://".length()));
 			shortenedURLModelAndView.addObject("shortenedUrl", prefix + "/" + id);
 
-			String shortenedUrl = prefix + "/" + id;
-			UrlRequestInfo info = new UrlRequestInfo(id, shortenedUrl, url, LocalDateTime.now().toLocalDate());
+			
+			UrlRequestInfo info = new UrlRequestInfo(id,LocalDateTime.now().toLocalDate());
 			HashMap<String, UrlRequestInfo> infoMap = ShortenMeApplication.getInfoMap();
 
 			if(infoMap.containsKey(id)){
-				//shortenedURLModelAndView.addObject("infoMapObj", infoMap.get(id).toString());
 				infoMap.get(id).increaseHit();
 				shortenedURLModelAndView.addObject("infoMapObj", infoMap.get(id).toString());
+				shortenedURLModelAndView.addObject("hitDates", infoMap.get(id).printHitsDateMap(id));
 			}
 			else {
 				infoMap.put(id, info);

@@ -38,9 +38,13 @@
 			</div>
 			<div class="alert alert-success" role="alert"
 					th:if="${infoMapObj}"
-					th:utext="'Info Map created: &lt;a href=\'' + ${infoMapObj} + '\'&gt;' + ${infoMapObj}
-       + '&lt;/a&gt;'">
+					th:utext="'InfoMap created: '+ ${infoMapObj}">
 				</div>
+		<!-- 	<div class="alert alert-success" role="alert"
+					th:if="${hitDates}"
+					th:utext="'Hit Dates created: &lt;a href=\'' + ${hitDates} + '\'&gt;' + ${hitDates}
+       + '&lt;/a&gt;'">
+				</div> -->
 			<form class="form-inline" th:action="@{/}"
 				th:object="${shortenUrlRequest}" method="POST">
 				<div class="alert alert-danger" role="alert"
